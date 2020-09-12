@@ -1,0 +1,10 @@
+Python Level 1 
+
+Link to Github
+https://github.com/cs-learning-2019/python1sat
+
+You can find the homework under the Homework folder. It is organized by week number.
+Solutions will be provided after the due date
+
+You can find the class content under the Lessons folder. Again it is organized by
+week number and you should refer back here if you are stuck on the homework.
