@@ -1,0 +1,2 @@
+On top of the homework pdf please read through this website which is about if statements
+https://www.w3schools.com/python/python_conditions.asp
