@@ -1,0 +1,2 @@
+Take a look at this website and go through the examples and question at the end
+https://www.w3schools.com/python/python_while_loops.asp
