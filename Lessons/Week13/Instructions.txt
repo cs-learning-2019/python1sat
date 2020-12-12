@@ -1,0 +1,2 @@
+Lets take up the homework for Python List
+After we will look at lots of exmaple of list with loops
