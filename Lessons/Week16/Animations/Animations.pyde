@@ -1,7 +1,7 @@
 # Focus Learning: Python Level 1
 # Animations
 # Kavan Lam
-# Jan 15, 2020
+# Jan 16, 2020
 
 
 # Contents
@@ -11,12 +11,125 @@
 # 4) Be able to switch the direction of animation with mouse pressed
 # 5) Keep track of number of bounces and display on the screen
 
+
+
+# Section 1
+"""
+x = 100
+y = 450
+
+def setup():
+    size(900, 900)
+
+def draw():
+    global x
+    global y
+    
+    # Clear the previous frame
+    background(0, 0, )
+    
+    # Draw the circle
+    ellipse(x, y, 50, 50)
+    
+    # Changing the position the circle
+    x = x + 5
+"""
+
+# Section 2
+"""
+x = 450
+y = 450
+direction = 1  # 1 = move down    -1 = move up
+
+def setup():
+    size(900, 900)
+
+def draw():
+    global x
+    global y
+    global direction
+    
+    # Clear the previous frame
+    background(0, 0, 0)
+    
+    # Draw the circle
+    ellipse(x, y, 50, 50)
+    
+    # Changing the position the circle
+    y = y + (direction * 5)   # If direction = 1 then y = y+5 . If direction = -1 then y = y - 5
+    
+    # Detect collision with the top and bottom wall
+    if y >= 900:  # If you hit the bottom wall
+        direction = -1
+    elif y <= 0:  # If you hit the top wall
+        direction = 1
+"""    
+
+# Section 3
+x = 450
+y = 450
+direction = 1  # 1 = move down    -1 = move up
+
+def setup():
+    size(900, 900)
+
+def draw():
+    global x
+    global y
+    global direction
+    
+    # Clear the previous frame
+    background(0, 0, 0)
+    
+    # Draw the circle
+    rect(x, y, 50, 50)
+    
+    # Changing the position the circle
+    y = y + (direction * 5)   # If direction = 1 then y = y+5 . If direction = -1 then y = y - 5
+    
+    # Detect collision with the top and bottom wall
+    if y >= 900:  # If you hit the bottom wall
+        direction = -1
+    elif y <= 0:  # If you hit the top wall
+        direction = 1
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Solutions
 """
 # Section 1
 x = 100
 y = 300
 def setup():
     size(900, 900)
+
 
 def draw():
     global x
@@ -54,7 +167,8 @@ def draw():
     
     # Check for collision
     if y <= 0:
-        direction = 1
+
+                direction = 1
     elif y >= 900:
         direction = -1
 """
