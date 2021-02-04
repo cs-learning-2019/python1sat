@@ -1,0 +1,5 @@
+Please go to the following website and review the content
+
+Variables -- https://www.w3schools.com/python/python_variables.asp
+Python List -- https://www.w3schools.com/python/python_lists.asp
+For Loops -- https://www.w3schools.com/python/python_for_loops.asp
