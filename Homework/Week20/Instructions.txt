@@ -2,8 +2,8 @@ Here is your homework for the week. You will be programing something very simila
 to what we did in class with the click and shoot.
 
 Part 1:
-In Processing make a program of two ball moving up and down as they bounce off the top and bottom
-wall. You can decide on the size of the balls and even the color. Try to make sure that the balls
+In Processing make a program of two balls moving up and down that bounce off the top and bottom
+walls. You can decide on the size of the balls and even the color. Try to make sure that the balls
 are always moving in the opposite direction. HINT: Look back at the code covered in class
 
 Part 2:
