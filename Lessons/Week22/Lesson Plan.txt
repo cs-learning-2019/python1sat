@@ -1,0 +1,7 @@
+We will now begin another major project.
+We will make a simple 2D shooting game called "Shoot them circles"
+In class I will write some code and explain the structure.
+For homework you will be ask to fill in some missing parts and code new parts yourself.
+So make sure you pay attention in class.
+
+BTW lets see the finish product that you guys will attempt to create.
