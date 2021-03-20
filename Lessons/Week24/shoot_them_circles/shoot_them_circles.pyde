@@ -10,13 +10,20 @@
 # 1) Setup the screen  [Done]
 # 2) Create the character and allow it to move using WASD and ensure that the character can't leave the screen [Done]
 # 3) Allow the character to shoot red lasers [Done]
-# 4) Create the cirlce (bad guys) they will spawn randomly  [Almost there (We talked about how to do this)]
+# 4) Create the cirlce (bad guys) they will spawn randomly  [Almost Done]
 # 5) Make the circles move towards the character
+
 
 character_x = 400
 character_y = 350
 character_size = 100
 character_speed = 10
+
+circle_x = []
+circle_y = []
+circle_r = []
+circle_g = []
+circle_b = []
 
 def setup():
     size(900, 900)
@@ -25,11 +32,38 @@ def draw():
     global character_x
     global character_y
     global character_size
+    global circle_x
+    global circle_y
+    global circle_r
+    global circle_g
+    global circle_b
     
     # Clear the previous frame
     background(0, 0, 0)
     
+    # Draw the character
     rect(character_x, character_y, character_size, character_size)
+    
+    # Spawn a circle
+    x = int(random(0, 900))
+    y = int(random(0, 900))
+    r = int(random(0, 255))
+    g = int(random(0, 255))
+    b = int(random(0, 255))
+    
+    circle_x.append(x)
+    circle_y.append(y)
+    circle_r.append(r)
+    circle_g.append(g)
+    circle_b.append(b)
+    
+    # Draw the circle
+    for index in range(0, len(circle_x)):
+        pushStyle()
+        fill(circle_r[index], circle_g[index], circle_b[index])
+        ellipse(circle_x[index], circle_y[index], 50, 50)
+        popStyle()
+    
 
 
 def mousePressed():
