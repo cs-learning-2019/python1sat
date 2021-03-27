@@ -1,7 +1,7 @@
 # Focus Learning: Python Level 1
 # Shoot Them Circles
 # Kavan Lam
-# March 6, 2021
+# March 27, 2021
 
 # HW
 # NO Homework
@@ -10,9 +10,8 @@
 # 1) Setup the screen  [Done]
 # 2) Create the character and allow it to move using WASD and ensure that the character can't leave the screen [Done]
 # 3) Allow the character to shoot red lasers [Done]
-# 4) Create the cirlce (bad guys) they will spawn randomly  [Almost Done]
+# 4) Create the cirlce (bad guys) they will spawn randomly  [Done]
 # 5) Make the circles move towards the character
-
 
 character_x = 400
 character_y = 350
@@ -24,6 +23,7 @@ circle_y = []
 circle_r = []
 circle_g = []
 circle_b = []
+timer_countdown = 50
 
 def setup():
     size(900, 900)
@@ -37,30 +37,39 @@ def draw():
     global circle_r
     global circle_g
     global circle_b
+    global timer_countdown
     
     # Clear the previous frame
-    background(0, 0, 0)
+    background(255, 255, 255)
     
     # Draw the character
+    pushStyle()
+    fill(0, 0, 0)
     rect(character_x, character_y, character_size, character_size)
+    popStyle()
     
     # Spawn a circle
-    x = int(random(0, 900))
-    y = int(random(0, 900))
-    r = int(random(0, 255))
-    g = int(random(0, 255))
-    b = int(random(0, 255))
-    
-    circle_x.append(x)
-    circle_y.append(y)
-    circle_r.append(r)
-    circle_g.append(g)
-    circle_b.append(b)
+    if timer_countdown <= 0:
+        x = int(random(0, 900))
+        y = int(random(0, 900))
+        r = int(random(0, 255))
+        g = int(random(0, 255))
+        b = int(random(0, 255))
+        
+        circle_x.append(x)
+        circle_y.append(y)
+        circle_r.append(r)
+        circle_g.append(g)
+        circle_b.append(b)
+        
+        timer_countdown = 50
+    else:
+        timer_countdown = timer_countdown - 1
     
     # Draw the circle
     for index in range(0, len(circle_x)):
         pushStyle()
-        fill(circle_r[index], circle_g[index], circle_b[index])
+        fill(circle_r[index], circle_g[index], circle_b[index], 50)
         ellipse(circle_x[index], circle_y[index], 50, 50)
         popStyle()
     
