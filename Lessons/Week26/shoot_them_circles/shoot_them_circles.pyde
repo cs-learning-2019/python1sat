@@ -4,14 +4,17 @@
 # March 27, 2021
 
 # HW
-# NO Homework
+# Complete step 8
 
 # Steps
 # 1) Setup the screen  [Done]
 # 2) Create the character and allow it to move using WASD and ensure that the character can't leave the screen [Done]
 # 3) Allow the character to shoot red lasers [Done]
 # 4) Create the cirlce (bad guys) they will spawn randomly  [Done]
-# 5) Make the circles move towards the character
+# 5) Make the circles move towards the character [Done]
+# 6) The character needs to die when one circle overlaps it
+# 7) The cicles need to die when we click on them
+# 8) We need to replace the sqaure with an actual character
 
 character_x = 400
 character_y = 350
@@ -23,7 +26,7 @@ circle_y = []
 circle_r = []
 circle_g = []
 circle_b = []
-timer_countdown = 50
+timer_countdown = 65
 
 def setup():
     size(900, 900)
@@ -62,7 +65,7 @@ def draw():
         circle_g.append(g)
         circle_b.append(b)
         
-        timer_countdown = 50
+        timer_countdown = 65
     else:
         timer_countdown = timer_countdown - 1
     
@@ -73,8 +76,29 @@ def draw():
         ellipse(circle_x[index], circle_y[index], 50, 50)
         popStyle()
     
-
-
+    # Move the circles towards the character
+    for index in range(0, len(circle_x)):
+        diff_x = character_x + (character_size / 2) - circle_x[index]
+        diff_y = character_y + (character_size / 2) - circle_y[index]
+        
+        if diff_x > 0:
+            diff_x = 1
+        elif diff_x < 0:
+            diff_x = -1
+        else:
+            diff_x = 0
+            
+        if diff_y > 0:
+            diff_y = 1
+        elif diff_y < 0:
+            diff_y = -1
+        else:
+            diff_y = 0
+        
+        circle_x[index] = circle_x[index] + diff_x
+        circle_y[index] = circle_y[index] + diff_y
+        
+    
 def mousePressed():
     global character_x
     global character_y
