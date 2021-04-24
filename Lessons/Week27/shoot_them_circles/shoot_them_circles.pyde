@@ -1,10 +1,10 @@
 # Focus Learning: Python Level 1
 # Shoot Them Circles
 # Kavan Lam
-# March 27, 2021
+# April 24, 2021
 
 # HW
-# Complete step 8
+# Complete step 9
 
 # Steps
 # 1) Setup the screen  [Done]
@@ -14,12 +14,15 @@
 # 5) Make the circles move towards the character [Done]
 # 6) The character needs to die when one circle overlaps it
 # 7) The cicles need to die when we click on them
-# 8) We need to replace the sqaure with an actual character
+# 8) We need to replace the sqaure with an actual character [Done]
+# 9) Make the character change directions
 
 character_x = 400
 character_y = 350
 character_size = 100
 character_speed = 10
+character_pics = []
+use_pic = 0
 
 circle_x = []
 circle_y = []
@@ -29,12 +32,20 @@ circle_b = []
 timer_countdown = 65
 
 def setup():
+    global character_pics
     size(900, 900)
+    character_pics.append(loadImage("kirby-down.jpg"))
+    character_pics.append(loadImage("kirby-left.jpg"))
+    character_pics.append(loadImage("kirby-right.jpg"))
+    character_pics.append(loadImage("kirby-up.jpg"))
+    
 
 def draw():
     global character_x
     global character_y
     global character_size
+    global character_pics
+    global use_pic
     global circle_x
     global circle_y
     global circle_r
@@ -47,8 +58,7 @@ def draw():
     
     # Draw the character
     pushStyle()
-    fill(0, 0, 0)
-    rect(character_x, character_y, character_size, character_size)
+    image(character_pics[use_pic], character_x, character_y, character_size, character_size)
     popStyle()
     
     # Spawn a circle
