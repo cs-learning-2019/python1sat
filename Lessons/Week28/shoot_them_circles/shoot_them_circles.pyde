@@ -4,7 +4,7 @@
 # April 24, 2021
 
 # HW
-# Complete step 9
+# NO HW
 
 # Steps
 # 1) Setup the screen  [Done]
@@ -15,7 +15,7 @@
 # 6) The character needs to die when one circle overlaps it
 # 7) The cicles need to die when we click on them
 # 8) We need to replace the sqaure with an actual character [Done]
-# 9) Make the character change directions
+# 9) Make the character change directions [Done]
 
 character_x = 400
 character_y = 350
@@ -34,10 +34,10 @@ timer_countdown = 65
 def setup():
     global character_pics
     size(900, 900)
-    character_pics.append(loadImage("kirby-down.jpg"))
-    character_pics.append(loadImage("kirby-left.jpg"))
-    character_pics.append(loadImage("kirby-right.jpg"))
-    character_pics.append(loadImage("kirby-up.jpg"))
+    character_pics.append(loadImage("kirby-down.jpg"))  # index 0
+    character_pics.append(loadImage("kirby-left.jpg"))  # index 1
+    character_pics.append(loadImage("kirby-right.jpg")) # index 2
+    character_pics.append(loadImage("kirby-up.jpg"))    # index 3
     
 
 def draw():
@@ -125,25 +125,37 @@ def keyPressed():
     global character_y
     global character_size
     global character_speed
+    global use_pic
     
     if key == "W" or key == "w":  # Move up
-       character_y = character_y - character_speed
-       if character_y < 0:
-           character_y = 0
+        use_pic = 3
+        character_y = character_y - character_speed
+        if character_y < 0:
+            character_y = 0
     elif key == "D" or key == "d":  # Move right
-       character_x = character_x + character_speed
-       if character_x > 800:
-           character_x = 800
+        use_pic = 2
+        character_x = character_x + character_speed
+        if character_x > 800:
+            character_x = 800
     elif key == "S" or key == "s":  # Move down
-       character_y = character_y + character_speed
-       if character_y > 800:
-           character_y = 800
+        use_pic = 0
+        character_y = character_y + character_speed
+        if character_y > 800:
+            character_y = 800
     elif key == "A" or key == "a":  # Move left
-       character_x = character_x - character_speed
-       if character_x < 0:
-           character_x = 0    
+        use_pic = 1
+        character_x = character_x - character_speed
+        if character_x < 0:
+            character_x = 0    
            
-           
+def distance(x, y, A, B):
+    temp1 = (x - A) ** 2
+    temp2 = (y - B) ** 2
+    temp3 = temp1 + temp2
+    distance = sqrt(temp3)
+    print(distance)
+
+distance(800, 200, 500, 300)
            
            
            
