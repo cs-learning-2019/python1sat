@@ -1,10 +1,11 @@
 # Focus Learning: Python Level 1
 # Shoot Them Circles
 # Kavan Lam
-# April 24, 2021
+# May 8, 2021
 
 # HW
-# NO HW
+# 1) Check which circles did not get hit by the laser
+# 2) Increase the player's score everytime they kill a circle (100 per circle)
 
 # Steps
 # 1) Setup the screen  [Done]
@@ -13,9 +14,10 @@
 # 4) Create the cirlce (bad guys) they will spawn randomly  [Done]
 # 5) Make the circles move towards the character [Done]
 # 6) The character needs to die when one circle overlaps it
-# 7) The cicles need to die when we click on them
+# 7) The cicles need to die when we click on them [Done]
 # 8) We need to replace the sqaure with an actual character [Done]
 # 9) Make the character change directions [Done]
+# 10) Display some score [Done]
 
 character_x = 400
 character_y = 350
@@ -23,13 +25,14 @@ character_size = 100
 character_speed = 10
 character_pics = []
 use_pic = 0
+score = 0
 
 circle_x = []
 circle_y = []
 circle_r = []
 circle_g = []
 circle_b = []
-timer_countdown = 65
+timer_countdown = 30
 
 def setup():
     global character_pics
@@ -39,13 +42,13 @@ def setup():
     character_pics.append(loadImage("kirby-right.jpg")) # index 2
     character_pics.append(loadImage("kirby-up.jpg"))    # index 3
     
-
 def draw():
     global character_x
     global character_y
     global character_size
     global character_pics
     global use_pic
+    global score
     global circle_x
     global circle_y
     global circle_r
@@ -59,6 +62,13 @@ def draw():
     # Draw the character
     pushStyle()
     image(character_pics[use_pic], character_x, character_y, character_size, character_size)
+    popStyle()
+    
+    # Draw the score
+    pushStyle()
+    fill(0, 255, 0)
+    textSize(30)
+    text(score, 30, 40)
     popStyle()
     
     # Spawn a circle
@@ -75,7 +85,7 @@ def draw():
         circle_g.append(g)
         circle_b.append(b)
         
-        timer_countdown = 65
+        timer_countdown = 30
     else:
         timer_countdown = timer_countdown - 1
     
@@ -112,14 +122,24 @@ def draw():
 def mousePressed():
     global character_x
     global character_y
+    global circle_x
+    global circle_y
+    global circle_r
+    global circle_g
+    global circle_b
+    global score
     
+    # Draw the laser
     pushStyle()
     stroke(255, 0, 0)
     strokeWeight(5)
     line(character_x + (character_size / 2), character_y + (character_size / 2), mouseX, mouseY)
     popStyle()
     
-
+    # Check which circles did not get hit by the laser [HOMEWORK]
+    score = score + 100
+    
+            
 def keyPressed():
     global character_x
     global character_y
@@ -147,15 +167,14 @@ def keyPressed():
         character_x = character_x - character_speed
         if character_x < 0:
             character_x = 0    
-           
+            
 def distance(x, y, A, B):
     temp1 = (x - A) ** 2
     temp2 = (y - B) ** 2
     temp3 = temp1 + temp2
     distance = sqrt(temp3)
-    print(distance)
+    return distance
 
-distance(800, 200, 500, 300)
            
            
            
