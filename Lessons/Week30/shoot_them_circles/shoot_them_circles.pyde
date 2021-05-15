@@ -1,11 +1,10 @@
 # Focus Learning: Python Level 1
 # Shoot Them Circles
 # Kavan Lam
-# May 8, 2021
+# May 15, 2021
 
 # HW
-# 1) Check which circles did not get hit by the laser
-# 2) Increase the player's score everytime they kill a circle (100 per circle)
+# Detect if any one of the circles touch the character (detect if the character dies) [Homework]
 
 # Steps
 # 1) Setup the screen  [Done]
@@ -118,6 +117,8 @@ def draw():
         circle_x[index] = circle_x[index] + diff_x
         circle_y[index] = circle_y[index] + diff_y
         
+    # Detect if any one of the circles touch the character (detect if the character dies) [Homework]
+        
     
 def mousePressed():
     global character_x
@@ -136,8 +137,29 @@ def mousePressed():
     line(character_x + (character_size / 2), character_y + (character_size / 2), mouseX, mouseY)
     popStyle()
     
-    # Check which circles did not get hit by the laser [HOMEWORK]
-    score = score + 100
+    # Check which circles did not get hit by the laser
+    temp_circle_x = []
+    temp_circle_y = []
+    temp_circle_r = []
+    temp_circle_g = []
+    temp_circle_b = []
+    
+    for index in range(0, len(circle_x)):
+        d = distance(mouseX, mouseY, circle_x[index], circle_y[index])
+        if d <= 50:  # This means the circle is dead
+            score = score + 100
+        else:  # This means the circle is not die
+            temp_circle_x.append(circle_x[index])
+            temp_circle_y.append(circle_y[index])
+            temp_circle_r.append(circle_r[index])
+            temp_circle_g.append(circle_g[index])
+            temp_circle_b.append(circle_b[index])
+    
+    circle_x = temp_circle_x
+    circle_y = temp_circle_y
+    circle_r = temp_circle_r
+    circle_g = temp_circle_g
+    circle_b = temp_circle_b
     
             
 def keyPressed():
