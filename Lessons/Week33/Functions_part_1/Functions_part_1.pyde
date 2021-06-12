@@ -1,7 +1,7 @@
 # Focus Learning Python Level 1
 # Functions part 1
 # Kavan Lam
-# June 5, 2021
+# June 12, 2021
 
 # Ex 1
 # Think of a function as a factory which will make something or do something.
@@ -46,3 +46,20 @@ def areaRect(side_length, side_width):
     
 result = areaRect(2, 5)
 print(result)
+
+# Homework
+print("------------------------------------------")
+def box_maker(box_size):
+    # Take care of the top of the box
+    print("*" * box_size)
+    
+    # Take care of the body of the box
+    for row in range(box_size - 2):
+        print("*" + " " * (box_size - 2) + "*")
+    
+    # Take care of the bottom of the box
+    print("*" * box_size)
+    
+box_maker(15)
+    
+    
