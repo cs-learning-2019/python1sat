@@ -1,0 +1,11 @@
+1) Take up HW
+2) Finish up functions
+	- show some cools things in processing
+	- Have a background gradually change color
+	- talk about default parameters
+	- See an example of three functions working together
+		- main function that processes a url
+		- helper function to get parameters
+		- helper function that returns resources as needed based on the url
+	
+3) Take about Python Level 2 in september
