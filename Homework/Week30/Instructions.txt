@@ -1,1 +1,0 @@
-# Detect if any one of the circles touch the character (detect if the character dies) [Homework]

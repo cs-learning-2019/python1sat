@@ -1,4 +1,0 @@
-1) Introduction
-2) Downloading Processing
-3) Getting Python Mode for Processing
-4) print("Hello World")

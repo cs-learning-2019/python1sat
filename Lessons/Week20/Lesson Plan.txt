@@ -1,3 +1,0 @@
-1) How can we make something disappear when we click on it
-
-2) Talk about projectiles and raycasting
