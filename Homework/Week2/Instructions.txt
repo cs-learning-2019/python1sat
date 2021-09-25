@@ -1,0 +1,5 @@
+1) Work on the questions in the Intro_to_python_homework.pdf
+
+2) Take a look at this website https://www.w3schools.com/python/python_variables.asp and just read it
+
+3) Take a look at this website https://www.w3schools.com/python/python_variables_names.asp and just read it
