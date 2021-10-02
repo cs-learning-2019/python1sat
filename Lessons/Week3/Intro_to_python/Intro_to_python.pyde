@@ -73,3 +73,6 @@ print(fav_num)
 x = "Kavan"
 y = 10
 print("My name is " + x + " and my age is " + str(y))
+
+# We use the str() function/command to be able to convert a number into a String
+# 2 --> "2"
