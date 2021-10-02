@@ -1,0 +1,18 @@
+1) Collect and take up week 2 homework
+
+2) Finish the Intro to Python Worksheet
+
+3) Talk about basic math operators in Python
+	- Add, subtract, divide, multiply, div, mod, exponents and square roots
+	- BEDMASS
+
+4) What does print(3/2) give and why?
+
+5) Data type conversions
+	- Converting from number to string
+	- Converting from String to number
+
+6) Work on some problems
+   Q1) Write Python Code to ask the user for their height and print out "Your height will be <height + 10> soon"
+   Q2) Write Python Code to print out the letter H
+   Q3) Write Python Code to print out the answer to the following (10-4)/5x4^2

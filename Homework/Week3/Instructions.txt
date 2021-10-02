@@ -1,0 +1,2 @@
+Take a look at Python_Basics_HW and answer all 5 questions. All of your answers should be types in Processing.
+Do not forget to save your work since you need to hand it in to me for marking.
