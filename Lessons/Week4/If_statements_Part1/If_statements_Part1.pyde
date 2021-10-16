@@ -1,12 +1,13 @@
 # Focus Learning: Python Level 1
 # If statements part 1
 # Kavan Lam
-# Oct 31, 2020
+# Oct 16, 2021
 
 # Skill 1
 # if (condition):   <--- General form  note : means then
 # <  means less than
 # >  means more than
+# : colon
 # Ex1
 if 3 < 5:
     print("Pikachu!")
@@ -45,7 +46,7 @@ else:
 # Skill 2
 # Ex 1
 print("------------------------------------------")
-mark = 95
+mark = 70
 if mark > 90:
     print("A+")
 elif mark > 80:
@@ -72,6 +73,7 @@ a = 20
 # First block of code
 if a > 17:
     print("You're an adult")
+    
     
 if a > 13:
     print("You're a teenager")
