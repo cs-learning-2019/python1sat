@@ -1,0 +1,11 @@
+1) Take up Week 4 HW
+
+2) Ice breaker question --- What do you want for Christmas this year?
+
+3) Look at If statements part 2
+
+4) If we have time then do the following question
+
+- Given a string and an integer print "Hello there" if the string contains the substring "yo",
+prints "boo" if the string contains the substring "ah" and the integer is greater than 15.
+Also print "Oh no" if the integer is even or the string contains and odd amount of characters.
