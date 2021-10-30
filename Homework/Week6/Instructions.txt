@@ -1,0 +1,3 @@
+1) Go to this website and read about Python List https://www.w3schools.com/python/python_lists.asp
+
+2) Work on the 4 questions in the Python_list_HW.pdf worksheet
