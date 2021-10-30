@@ -1,7 +1,7 @@
 # Focus Learning: Python Level 1
 # Python List
 # Kavan Lam
-# Dec 5, 2020
+# Oct 30, 2021
 
 # You have 3 students and you want to store their ages
 age1 = 8
@@ -16,8 +16,8 @@ age3 = 9
 ages = [8, 7, 9, 10, 11, 7]  # This is a Python List
 
 print(ages)
-print(ages[0])
-print(ages[3])
+print(ages[0])  # We can use indexing to get specific numbers from the list
+print(ages[3])  # The age at index 3 is 10
 
 # Now lets actually look at the worksheet
 print("----------------------------------")
@@ -42,7 +42,7 @@ print(pets[-1])  # This will give us the last number in the list
 
 # Adding to and Deleting From Lists
 print("----------------------------------")
-names = ["john", "bob", "lily", "yo", "bo"]
+names = ["john", "bob", "lily", "yo", "boo"]
 names.append("To")
 print(names)
 

@@ -3,7 +3,9 @@
 2) Take up Week 5 HW
 
 3) Answer the following question: Given a string and an integer print "Hello there" if the string contains the substring "yo",
+
 prints "boo" if the string contains the substring "ah" and the integer is greater than 15.
+
 Also print "Oh no" if the integer is even or the string contains and odd amount of characters.
 
 4) Look at Python List worksheet
