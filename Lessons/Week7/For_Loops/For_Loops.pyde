@@ -1,7 +1,7 @@
 # Focus Learning: Python Level 1
 # For loops 
 # Kavan Lam
-# Nov 14, 2020
+# Nov 6, 2021
 
 # We can print the numbers from 0 to 5 easily
 print(0)
@@ -19,7 +19,7 @@ print(5)
 # Ex 1
 print("------------------------------------------")
 # for (a variable) in (something):
-for i in range(10):  # Range will go one less than what you think
+for i in range(100):  # Range will go one less than what you think
     print(i)
     
 print("Hello")  # This line is not part of the for loop since there is no tab (4 spaces)

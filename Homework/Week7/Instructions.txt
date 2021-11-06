@@ -7,6 +7,10 @@ Then using the sorted list of names check to see of the first name in the list h
 If there is an even amount of characters then print "The first student has an even number of letters" otherwise
 your code should print "The first student has an odd number of letters".
 
+["John", "Austin", "Dog", "Frank", "Daniel", "June", "Abby", "Catty", "Kavan"]
+
 Question 5
 - Below is a list of numbers. Your goal is to go through the list of numbers using a for loop and find out how many of the
 numbers are greater than 50. At the end you should print out how many of the numbers were greater than 50.
+
+[23, 12, 5, 12, 45, 9, 7, 6, 1, 78, 90, 100, 71]
