@@ -1,0 +1,12 @@
+1) Work on For Loop Python Homework.pdf
+2) Answer the below 2 questions about Python List
+
+Question 4
+- Below is a python list of names. Your goal is to sort the list of names and print the new list of names.
+Then using the sorted list of names check to see of the first name in the list has an even amount of characters.
+If there is an even amount of characters then print "The first student has an even number of letters" otherwise
+your code should print "The first student has an odd number of letters".
+
+Question 5
+- Below is a list of numbers. Your goal is to go through the list of numbers using a for loop and find out how many of the
+numbers are greater than 50. At the end you should print out how many of the numbers were greater than 50.

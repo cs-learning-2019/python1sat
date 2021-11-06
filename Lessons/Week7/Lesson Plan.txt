@@ -1,0 +1,11 @@
+1) Take up HW (Week 6 Python List)
+
+2) Ice breaker question: What is your favourite month
+
+3) Finish talking about Python List
+- Quick review of indexing with list
+- Discussion on the different kinds of methods for List
+
+4) Begin talking about For Loops
+- I will cover a few things, but you guys will do the rest in class on your own
+- Please ask questions when you do not understand something
