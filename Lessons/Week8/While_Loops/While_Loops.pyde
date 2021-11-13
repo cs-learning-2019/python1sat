@@ -51,13 +51,14 @@ while passby == False:
 
 # Ex 6
 print("---------------------------------")
-# This is an exmaple of a infinite loop
+# This is an example of a infinite loop
 """
 counter = 10
 while counter > 0:
     print("This is amazing!")
     counter = counter + 1
 """
+
 counter = 10
 while counter > 0:
     print("This is amazing!")
