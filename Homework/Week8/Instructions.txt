@@ -1,0 +1,3 @@
+1) Do the 4 questions in the while_loop_HW.pdf
+
+2) Read this web page https://www.w3schools.com/python/python_while_loops.asp
