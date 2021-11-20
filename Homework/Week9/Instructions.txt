@@ -1,0 +1,36 @@
+There is no pdf. Please read and answer the following three challenge questions below.
+
+Question 1
+Write Python code which prints the following. Note, you must use loops. 
+*******
+******
+*****
+****
+***
+**
+*
+**
+***
+****
+*****
+******
+*******
+
+Question 2
+Write Python code to process a list of numbers and removes all numbers from the list 
+that are less than 50 or greater than 85. At the end you should print out the new list.
+
+
+Question 3
+Write Python code that takes a string and removes all punctuation and special characters from it and print the new string.
+To help you, here is a list of all the punctuation and special characters that you need to worry about
+punctuation_and_special = [".", "," , ":", ";", "!", "?", "$", "@", "%", "#"]
+
+For exmaple if the string is like this
+my_string = "Hello, My name is $John? and I love CS!!"
+
+then you code needs to remove all the punctuation and special character so that in the end the string looks like this...
+"Hello My name is John and I love CS"
+
+
+

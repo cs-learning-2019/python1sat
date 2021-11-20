@@ -1,0 +1,3 @@
+1) Take up homework from week 8
+
+2) Finish loops (we will do for and while loops today)
