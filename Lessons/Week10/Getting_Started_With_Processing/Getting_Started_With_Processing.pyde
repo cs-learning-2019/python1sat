@@ -1,8 +1,20 @@
 # Focus Learning: Python Level 1
 # Getting started with Processing
 # Kavan Lam
-# Sept 27, 2020
+# Nov 27, 2021
 
+def setup():
+    size(400, 400)
+    
+def draw():
+    fill(255, 0, 0)
+    background(0, 255, 0)
+    stroke(0, 0, 255)
+    strokeWeight(5)
+    rect(200, 200, 250, 100)
+
+
+"""
 # def = defining
 # Note all of the code inside a section must be tabbed (4 spaces)
 def setup():
@@ -39,7 +51,7 @@ def draw():
     textSize(50)
     text("Hello World", 300, 50)  # text("What you want to say", x, y) 
     popStyle()
-
+"""
     
 
     
