@@ -3,15 +3,12 @@
 # Kavan Lam
 # Jan 16, 2020
 
-
 # Contents
 # 1) Simple animation of a ball moving to the right
 # 2) Animation of a ball moving up and down (bouncing off walls)
 # 3) Same as 2 but with a square
 # 4) Be able to switch the direction of animation with mouse pressed
 # 5) Keep track of number of bounces and display on the screen
-
-
 
 # Section 1
 """
@@ -25,10 +22,18 @@ def draw():
     global x
     global y
     
-    # Clear the previous frame
-    background(0, 0, )
+    # Clear the previous from 
+    background(0, 0, 0)
+    
+    # Draw a dot
+    pushStyle()
+    strokeWeight(9)
+    stroke(0, 255, 0)
+    point(200, 100)
+    popStyle()
     
     # Draw the circle
+    fill(255, 0, 0)
     ellipse(x, y, 50, 50)
     
     # Changing the position the circle
@@ -36,10 +41,9 @@ def draw():
 """
 
 # Section 2
-"""
+direction = 1  # Either 1 or -1 ---> 1 = move down , -1 = move up
 x = 450
 y = 450
-direction = 1  # 1 = move down    -1 = move up
 
 def setup():
     size(900, 900)
@@ -47,79 +51,23 @@ def setup():
 def draw():
     global x
     global y
-    global direction
+    global direction 
     
-    # Clear the previous frame
-    background(0, 0, 0)
+    background(0, 0, 0) # Remove the previous frame
     
-    # Draw the circle
+    fill(0, 255, 0)
     ellipse(x, y, 50, 50)
     
-    # Changing the position the circle
-    y = y + (direction * 5)   # If direction = 1 then y = y+5 . If direction = -1 then y = y - 5
+    # move the circle
+    y = y + (direction * 10)
     
-    # Detect collision with the top and bottom wall
-    if y >= 900:  # If you hit the bottom wall
-        direction = -1
-    elif y <= 0:  # If you hit the top wall
+    # Check for collision
+    # This is for the top wall
+    if y <= 0:
         direction = 1
-"""    
-
-# Section 3
-x = 450
-y = 450
-direction = 1  # 1 = move down    -1 = move up
-
-def setup():
-    size(900, 900)
-
-def draw():
-    global x
-    global y
-    global direction
-    
-    # Clear the previous frame
-    background(0, 0, 0)
-    
-    # Draw the circle
-    rect(x, y, 50, 50)
-    
-    # Changing the position the circle
-    y = y + (direction * 5)   # If direction = 1 then y = y+5 . If direction = -1 then y = y - 5
-    
-    # Detect collision with the top and bottom wall
-    if y >= 900:  # If you hit the bottom wall
+    # This is for the bottom wall
+    elif y >= 900:
         direction = -1
-    elif y <= 0:  # If you hit the top wall
-        direction = 1
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Solutions
