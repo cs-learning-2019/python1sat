@@ -40,6 +40,7 @@ def draw():
     x = x + 5
 """
 
+"""
 # Section 2
 direction = 1  # Either 1 or -1 ---> 1 = move down , -1 = move up
 x = 450
@@ -66,57 +67,6 @@ def draw():
     if y <= 0:
         direction = 1
     # This is for the bottom wall
-    elif y >= 900:
-        direction = -1
-
-
-# Solutions
-"""
-# Section 1
-x = 100
-y = 300
-def setup():
-    size(900, 900)
-
-
-def draw():
-    global x
-    global y
-    background(0, 0, 0)
-    
-    fill(255, 0, 0)
-    ellipse(x, y, 50, 50)
-    
-    # move the circle
-    x = x + 10
-"""    
-
-"""
-# Section 2
-x = 450
-y = 450
-direction = 1  # Either 1 or -1 ---> 1 = move down , -1 = move up
-
-def setup():
-    size(900, 900)
-
-def draw():
-    global x
-    global y
-    global direction 
-    
-    background(0, 0, 0) # Remove the previous frame
-    
-    fill(255, 0, 0)
-    ellipse(x, y, 50, 50)
-    
-    # move the circle
-    y = y + (direction * 10)
-    
-    # Check for collision
-    if y <= 0:
-
-                direction = 1
     elif y >= 900:
         direction = -1
 """
@@ -150,11 +100,11 @@ def draw():
         direction = -1
 """
 
-"""
+
 # Section 4
 x = 450
 y = 450
-direction = 1  # Either 1 or -1 ---> 1 = move down , -1 = move up
+direction = 1  # Either 1 or -1 ---> 1 = move down or right , -1 = move up or left
 case = 1 # Either 1 or 2 --> 1 = Move up and down and 2 = move left and right
 
 def setup():
@@ -195,7 +145,17 @@ def mousePressed():
         case = 2
     elif case == 2:
         case = 1
-"""
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 """
 # Section 5
 x = 450
