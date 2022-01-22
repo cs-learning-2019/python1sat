@@ -1,0 +1,19 @@
+Here is your homework for the week
+
+Part 1:
+In Processing make a program of two balls moving up and down that bounce off the top and bottom
+walls. You can decide on the size of the balls and even the color. Try to make sure that the balls
+are always moving in the opposite direction.
+
+Part 2:
+Once you got part 1 finished you now need to add extra code so that when you click on the "A" key
+on your keyboard a ball disappears. For example, the first time you click "A" one of the two balls
+will disapear. Then the second time you click "A" the second ball disappears. At this point you will
+have no more balls. HINT: use def keyPressed(): and do not forget about the pre made variable key 
+
+Part 3 Bonus (You do not have to do this, but I recommend you do it):
+Add even more code so that each time you click on your mouse the color of the background changes.
+
+
+All three parts will be taken up next class. DO NOT forget to save your work! You will be
+submitting this to me next class. Good Luck.
