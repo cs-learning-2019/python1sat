@@ -1,17 +1,1 @@
-1) Class introduction, what is Python and programming. What is Processing.
-
-2) Ice breaker questions
-    - Why are you taking this course? Let me guess your parents forced you?
-    - Do you have any pass experience with coding?
-    - What do you want to do when you get older?
-
-3) Don't worry about how to hand in homework for now. I will talk more about that once you
-   get real homework.
-
-4) Lets take a look at the class website (this is where the class content and homework will be)
-
-5) How to download Processing and get Python Mode. https://processing.org/download
-
-6) Write your first of line code. Can you write some code to print out a bunch of info about yourself?
-
-7) [If time permits] Share report URLs and talk about how HW works
+1) Begin the "Shoot Them Circles" project
