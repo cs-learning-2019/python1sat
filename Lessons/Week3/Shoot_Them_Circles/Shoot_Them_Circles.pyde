@@ -4,15 +4,12 @@
 
 ########## HOMEWORK #############
 """
-1) Make the circle red with a orange border
-2) Make sure the circles do not spawn too close to the character
-3) Challenge: When you click on a circle the circle should die and disappear
+1) Add score into the game
 """
 
 ########## Next steps to work on during class (NOT HOMEWORK) #############
 """
-1) Make the circles move towards the player
-2) Add score into the game
+1) Make the circles move towards the player and the player should die when touched by a circle
 3) Add game over screen
 4) Replace the square and circle with images of actual characters
 5) Add music and sound effects into the game
@@ -63,12 +60,21 @@ def draw():
         spawn_timer = 0
         random_x = int(random(0, 800))
         random_y = int(random(0, 800))
-        circle_x.append(random_x)
-        circle_y.append(random_y)
+        character_center_x = character_x + 40
+        character_center_y = character_y + 40
+        distance = dist(random_x, random_y, character_center_x, character_center_y)
+        if (distance > 120):
+            circle_x.append(random_x)
+            circle_y.append(random_y)
     
     # Draw the circles
     for colNum in range(len(circle_x)):
+        pushStyle()
+        fill(255, 0, 0)
+        stroke(255, 141, 0)
+        strokeWeight(3)
         ellipse(circle_x[colNum], circle_y[colNum], 50, 50)
+        popStyle()
         
         
 def keyPressed():
@@ -101,11 +107,36 @@ def keyPressed():
 
 def mousePressed():
     global character_x, character_y
+    global circle_x, circle_y
+    
+    # Draw the laser
     pushStyle()
     stroke(245, 62, 236)
     strokeWeight(4)
     line(mouseX, mouseY, character_x + 40, character_y + 40)
     popStyle()
+    
+    # Check if any of the circles died
+    new_circle_x = []
+    new_circle_y = []
+    for colNum in range(len(circle_x)):
+        distance = dist(mouseX, mouseY, circle_x[colNum], circle_y[colNum])
+        if (distance > 50):
+            new_circle_x.append(circle_x[colNum])
+            new_circle_y.append(circle_y[colNum])
+    
+    circle_x = new_circle_x
+    circle_y = new_circle_y
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
         
         
