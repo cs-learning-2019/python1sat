@@ -4,16 +4,18 @@
 
 ########## HOMEWORK #############
 """
-1) Player should die when touched by a circle
+1) Finish game over screen (Add text to display the score and a message --> Either "You are a pro" or "You need practice")
+2) Make the game over screen use better colors
 """
 
 ########## Next steps to work on during class (NOT HOMEWORK) #############
 """
-2) player should die when touched by a circle
-3) Add game over screen
+3) Play Again button
 4) Replace the square and circle with images of actual characters
 5) Add music and sound effects into the game
-6) Add ability to move diagonally 
+6) Add ability to move diagonally
+7) We should make the game harder as your score increases
+8) Change the font style
 """
 
 # Some variables for the character
@@ -34,7 +36,35 @@ def setup():
     size(800, 800)
     
 def draw():
-    global character_x, character_y
+    if (character_alive == True):
+        playGame()
+    else:
+        gameOver()
+
+def gameOver():
+    # Clear the game screen
+    background(120, 120, 120)
+    
+    # Draw the game over text
+    pushStyle()
+    textAlign(CENTER)
+    textSize(60)
+    fill(255, 0, 0)
+    text("Game Over", 400, 130)
+    popStyle()
+    
+    # Draw the play again button
+    pushStyle()
+    fill(255, 255, 255)
+    rect(300, 400, 200, 50)
+    textAlign(CENTER)
+    textSize(30)
+    fill(0, 0, 200)
+    text("Play Again", 400, 435)
+    popStyle()
+    
+def playGame():
+    global character_x, character_y, character_alive
     global circle_x, circle_y, spawn_timer
     global score
     
@@ -42,8 +72,9 @@ def draw():
     background(132, 188, 242)
     
     # Draw the character
-    fill(132, 242, 182)
-    rect(character_x, character_y, 80, 80)
+    if (character_alive == True):
+        fill(132, 242, 182)
+        rect(character_x, character_y, 80, 80)
     
     # Draw the crosshair
     pushStyle()
@@ -113,13 +144,18 @@ def draw():
         
     circle_x = new_circle_x
     circle_y = new_circle_y
+    
+    # Check to see if the character got touched by a circle
+    for colNum in range(len(circle_x)):
+        distance = dist(character_x + 40, character_y + 40, circle_x[colNum], circle_y[colNum])
+        if distance < 60:
+           character_alive = False 
         
     # Display the score
     textSize(50)
     fill(0, 0, 0)
     text("Score: " + str(score), 30, 50)
-        
-        
+                
 def keyPressed():
     global character_x, character_y, character_speed
     
@@ -149,30 +185,46 @@ def keyPressed():
             character_y = 720
 
 def mousePressed():
-    global character_x, character_y
+    global character_x, character_y, character_alive
     global circle_x, circle_y
     global score
     
-    # Draw the laser
-    pushStyle()
-    stroke(245, 62, 236)
-    strokeWeight(4)
-    line(mouseX, mouseY, character_x + 40, character_y + 40)
-    popStyle()
-    
-    # Check if any of the circles died
-    new_circle_x = []
-    new_circle_y = []
-    for colNum in range(len(circle_x)):
-        distance = dist(mouseX, mouseY, circle_x[colNum], circle_y[colNum])
-        if (distance > 50):
-            new_circle_x.append(circle_x[colNum])
-            new_circle_y.append(circle_y[colNum])
-        else:
-            score += 1
-    
-    circle_x = new_circle_x
-    circle_y = new_circle_y
+    if (character_alive == True):
+        # Draw the laser
+        pushStyle()
+        stroke(245, 62, 236)
+        strokeWeight(4)
+        line(mouseX, mouseY, character_x + 40, character_y + 40)
+        popStyle()
+        
+        # Check if any of the circles died
+        new_circle_x = []
+        new_circle_y = []
+        for colNum in range(len(circle_x)):
+            distance = dist(mouseX, mouseY, circle_x[colNum], circle_y[colNum])
+            if (distance > 50):
+                new_circle_x.append(circle_x[colNum])
+                new_circle_y.append(circle_y[colNum])
+            else:
+                score += 1
+        
+        circle_x = new_circle_x
+        circle_y = new_circle_y
+    else:
+        # Check if the player clicked on the Play Again button
+        if mouseX >= 300 and mouseX <= 500 and mouseY >= 400 and mouseY <= 450:
+           character_alive = True
+           score = 0
+           circle_x = []
+           circle_y = []
+           character_x = 350
+           character_y = 350
+        
+        
+        
+        
+        
+        
         
         
         
