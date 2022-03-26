@@ -4,13 +4,10 @@
 
 ########## HOMEWORK #############
 """
-1) Finish game over screen (Add text to display the score and a message --> Either "You are a pro" or "You need practice")
-2) Make the game over screen use better colors
 """
 
 ########## Next steps to work on during class (NOT HOMEWORK) #############
 """
-4) Replace the square and circle with images of actual characters
 5) Add music and sound effects into the game
 6) Add ability to move diagonally
 7) We should make the game harder as your score increases
@@ -22,6 +19,7 @@ character_x = 350
 character_y = 350
 character_speed = 5
 character_alive = True  # or this could be False
+character_direction = "left" # The other options are "right", "up" and "down"
 
 # Some variables for the circles
 circle_x = []
@@ -31,8 +29,28 @@ spawn_timer = 0
 # Other variables
 score = 0
 
+
+add_library('minim')
+
 def setup():
+    global bad_guy
+    global kirby_up
+    global kirby_down
+    global kirby_left
+    global kirby_right
+    global minim
+    
     size(800, 800)
+    
+    # Load some images
+    bad_guy = loadImage("bad.PNG")
+    kirby_up = loadImage("kirby-up.jpg")
+    kirby_down = loadImage("kirby-down.jpg")
+    kirby_left = loadImage("kirby-left.jpg")
+    kirby_right = loadImage("kirby-right.jpg")
+    
+    # Do some minim stuff
+    minim = Minim(this)
     
 def draw():
     if (character_alive == True):
@@ -52,6 +70,27 @@ def gameOver():
     text("Game Over", 400, 130)
     popStyle()
     
+    # Draw the score text
+    pushStyle()
+    textAlign(CENTER)
+    textSize(40)
+    fill(0, 0, 255)
+    text("Your score is: " + str(score), 400, 210)
+    popStyle()
+    
+    # Draw the score text
+    pushStyle()
+    textAlign(CENTER)
+    textSize(40)
+    fill(0, 255, 0)
+    if score > 20:
+        text("You are a pro", 400, 300)
+    elif score > 10:
+        text("You are good", 400, 300)
+    else:
+        text("You need practice", 400, 300)
+    popStyle()
+    
     # Draw the play again button
     pushStyle()
     fill(255, 255, 255)
@@ -64,16 +103,28 @@ def gameOver():
     
 def playGame():
     global character_x, character_y, character_alive
+    global character_direction
+    global kirby_up
+    global kirby_down
+    global kirby_left
+    global kirby_right
     global circle_x, circle_y, spawn_timer
     global score
+    global bad_guy
     
     # Clear the previous frame (draw the background)
     background(132, 188, 242)
     
-    # Draw the character
+    # Draw the character (Kirby)
     if (character_alive == True):
-        fill(132, 242, 182)
-        rect(character_x, character_y, 80, 80)
+        if character_direction == "left":
+            image(kirby_left, character_x, character_y, 80, 80)
+        elif character_direction == "right":
+            image(kirby_right, character_x, character_y, 80, 80)
+        elif character_direction == "up":
+            image(kirby_up, character_x, character_y, 80, 80)
+        elif character_direction == "down":
+            image(kirby_down, character_x, character_y, 80, 80)
     
     # Draw the crosshair
     pushStyle()
@@ -102,13 +153,13 @@ def playGame():
             circle_x.append(random_x)
             circle_y.append(random_y)
     
-    # Draw the circles
+    # Draw the circles (bad guy)
     for colNum in range(len(circle_x)):
         pushStyle()
         fill(255, 0, 0)
         stroke(255, 141, 0)
         strokeWeight(3)
-        ellipse(circle_x[colNum], circle_y[colNum], 50, 50)
+        image(bad_guy, circle_x[colNum] - 50, circle_y[colNum] - 50, 70, 70)
         popStyle()
     
     # Move the circles closer to the character
@@ -157,27 +208,32 @@ def playGame():
                 
 def keyPressed():
     global character_x, character_y, character_speed
+    global character_direction
     
     # Move up
     if key == "w" or key == "W":
+        character_direction = "up"
         character_y = character_y - character_speed
         # We also need to check if the character went through the top wall
         if character_y < 0:
             character_y = 0
     # Move right
     elif key == "d" or key == "D":
+        character_direction = "right"
         character_x = character_x + character_speed
         # We also need to check if the character went through the right wall
         if character_x > 720:
             character_x = 720
     # Move left
     elif key == "a" or key == "A":
+        character_direction = "left"
         character_x = character_x - character_speed
         # We also need to check if the character went through the left wall
         if character_x < 0:
             character_x = 0
     # Move down
     elif key == "s" or key == "S":
+        character_direction = "down"
         character_y = character_y + character_speed
         # We also need to check if the character went through the top wall
         if character_y > 720:
@@ -187,6 +243,7 @@ def mousePressed():
     global character_x, character_y, character_alive
     global circle_x, circle_y
     global score
+    global minim
     
     if (character_alive == True):
         # Draw the laser
@@ -195,6 +252,9 @@ def mousePressed():
         strokeWeight(4)
         line(mouseX, mouseY, character_x + 40, character_y + 40)
         popStyle()
+        
+        # Play sound effect
+        minim.loadFile("Score.wav").play()
         
         # Check if any of the circles died
         new_circle_x = []
