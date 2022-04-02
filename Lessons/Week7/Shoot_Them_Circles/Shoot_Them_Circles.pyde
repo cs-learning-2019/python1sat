@@ -5,14 +5,13 @@
 ########## HOMEWORK #############
 """
 1) Add a main menu to the game (hint: I already showed you how to make the game over screen)
+Note: You do not have to have music or picture for the main menu
 """
 
 ########## Next steps to work on during class (NOT HOMEWORK) #############
 """
-5) Add music and sound effects into the game
+5) Talk about the bug with the spawn rate. Note I already fixed it in the code
 6) Add ability to move diagonally
-7) We should make the game harder as your score increases
-8) Change the font style
 """
 
 # Some variables for the character
@@ -29,7 +28,7 @@ spawn_timer = 0
 
 # Other variables
 score = 0
-
+first_time = True
 
 add_library('minim')
 
@@ -53,10 +52,20 @@ def setup():
     # Do some minim stuff
     minim = Minim(this)
     
+    # Play sound effect
+    minim.loadFile("Deep Logic.wav").loop()    
+    
 def draw():
+    global minim
+    global first_time
+    
     if (character_alive == True):
         playGame()
     else:
+        if first_time == True:
+            minim.stop()
+            minim.loadFile("End Game.wav").loop()
+            first_time = False
         gameOver()
 
 def gameOver():
@@ -66,16 +75,20 @@ def gameOver():
     # Draw the game over text
     pushStyle()
     textAlign(CENTER)
-    textSize(60)
     fill(255, 0, 0)
+    font = loadFont("BookmanOldStyle-Italic-48.vlw")
+    textFont(font)
+    textSize(70)
     text("Game Over", 400, 130)
     popStyle()
     
     # Draw the score text
     pushStyle()
     textAlign(CENTER)
-    textSize(40)
     fill(0, 0, 255)
+    font = loadFont("ColonnaMT-48.vlw")
+    textFont(font)
+    textSize(40)
     text("Your score is: " + str(score), 400, 210)
     popStyle()
     
@@ -141,9 +154,22 @@ def playGame():
     line(mouseX - 8, mouseY, mouseX - 35, mouseY)
     popStyle()
     
+    # Determine the spawn rate
+    rate = 45
+    if score > 30:
+        rate = 10
+    elif score > 20:
+        rate = 20
+    elif score > 10:
+        rate = 35
+    elif score > 5:
+        rate = 40
+    else:
+        rate = 45
+    
     # Spawn new circle
     spawn_timer = spawn_timer + 1
-    if spawn_timer == 45:
+    if spawn_timer >= rate:
         spawn_timer = 0
         random_x = int(random(0, 800))
         random_y = int(random(0, 800))
@@ -162,6 +188,14 @@ def playGame():
         strokeWeight(3)
         image(bad_guy, circle_x[colNum] - 50, circle_y[colNum] - 50, 70, 70)
         popStyle()
+    
+    # Get speed of the circles
+    if score > 20:
+        s = 3
+    elif score > 10:
+        s = 2
+    else:
+        s = 1
     
     # Move the circles closer to the character
     new_circle_x = []
@@ -186,8 +220,8 @@ def playGame():
             difference_y = 0
         
         # Find the new location of the circle
-        new_x = circle_x[colNum] + difference_x
-        new_y = circle_y[colNum] + difference_y
+        new_x = circle_x[colNum] + difference_x * s
+        new_y = circle_y[colNum] + difference_y * s
         
         # Add the new location to the list
         new_circle_x.append(new_x)
@@ -245,6 +279,7 @@ def mousePressed():
     global circle_x, circle_y
     global score
     global minim
+    global first_time
     
     if (character_alive == True):
         # Draw the laser
@@ -279,6 +314,9 @@ def mousePressed():
            circle_y = []
            character_x = 350
            character_y = 350
+           first_time = True
+           minim.stop()  # Stop the end game song
+           minim.loadFile("Deep Logic.wav").loop()
         
         
         
