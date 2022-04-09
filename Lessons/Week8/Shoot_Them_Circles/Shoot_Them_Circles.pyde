@@ -2,24 +2,13 @@
 # Shoot Them Circles
 # Feb 12, 2022
 
-########## HOMEWORK #############
-"""
-1) Add a main menu to the game (hint: I already showed you how to make the game over screen)
-Note: You do not have to have music or picture for the main menu
-"""
-
-########## Next steps to work on during class (NOT HOMEWORK) #############
-"""
-5) Talk about the bug with the spawn rate. Note I already fixed it in the code
-6) Add ability to move diagonally
-"""
-
 # Some variables for the character
 character_x = 350
 character_y = 350
 character_speed = 5
-character_alive = True  # or this could be False
+character_alive = False  # or this could be False
 character_direction = "left" # The other options are "right", "up" and "down"
+direction = [0, 0, 0, 0]  # WASD
 
 # Some variables for the circles
 circle_x = []
@@ -29,6 +18,7 @@ spawn_timer = 0
 # Other variables
 score = 0
 first_time = True
+on_main_menu = True
 
 add_library('minim')
 
@@ -58,8 +48,11 @@ def setup():
 def draw():
     global minim
     global first_time
+    global on_main_menu
     
-    if (character_alive == True):
+    if (on_main_menu == True):
+        mainMenu()
+    elif (character_alive == True):
         playGame()
     else:
         if first_time == True:
@@ -67,7 +60,31 @@ def draw():
             minim.loadFile("End Game.wav").loop()
             first_time = False
         gameOver()
-
+        
+def mainMenu():
+    # Clear the game screen
+    background(191, 100, 219)
+    
+    # Draw the title of the game
+    pushStyle()
+    textAlign(CENTER)
+    fill(0, 255, 0)
+    font = loadFont("BookmanOldStyle-Italic-48.vlw")
+    textFont(font)
+    textSize(70)
+    text("Shoot Them Circles", 400, 130)
+    popStyle()
+    
+    # Draw the play now button
+    pushStyle()
+    fill(255, 255, 255)
+    rect(300, 400, 200, 50)
+    textAlign(CENTER)
+    textSize(30)
+    fill(0, 0, 200)
+    text("Play Now", 400, 435)
+    popStyle()
+    
 def gameOver():
     # Clear the game screen
     background(120, 120, 120)
@@ -116,7 +133,7 @@ def gameOver():
     popStyle()
     
 def playGame():
-    global character_x, character_y, character_alive
+    global character_x, character_y, character_alive, character_speed
     global character_direction
     global kirby_up
     global kirby_down
@@ -128,6 +145,25 @@ def playGame():
     
     # Clear the previous frame (draw the background)
     background(132, 188, 242)
+    
+    # Move the character
+    character_x = character_x - (character_speed * direction[1]) + (character_speed * direction[3])
+    character_y = character_y - (character_speed * direction[0]) + (character_speed * direction[2])
+    
+    # Make sure the character does not leave the screen
+    # Top wall
+    if character_y < 0:
+        character_y = 0
+    # Bottom wall
+    elif character_y > 720:
+        character_y = 720
+    
+    # Left wall
+    if character_x < 0:
+        character_x = 0
+    # Right wall
+    elif character_x > 720:
+        character_x = 720
     
     # Draw the character (Kirby)
     if (character_alive == True):
@@ -242,46 +278,63 @@ def playGame():
     text("Score: " + str(score), 30, 50)
                 
 def keyPressed():
-    global character_x, character_y, character_speed
+    global character_x, character_y, character_speed, character_alive, direction
     global character_direction
     
-    # Move up
-    if key == "w" or key == "W":
-        character_direction = "up"
-        character_y = character_y - character_speed
-        # We also need to check if the character went through the top wall
-        if character_y < 0:
-            character_y = 0
-    # Move right
-    elif key == "d" or key == "D":
-        character_direction = "right"
-        character_x = character_x + character_speed
-        # We also need to check if the character went through the right wall
-        if character_x > 720:
-            character_x = 720
-    # Move left
-    elif key == "a" or key == "A":
-        character_direction = "left"
-        character_x = character_x - character_speed
-        # We also need to check if the character went through the left wall
-        if character_x < 0:
-            character_x = 0
-    # Move down
-    elif key == "s" or key == "S":
-        character_direction = "down"
-        character_y = character_y + character_speed
-        # We also need to check if the character went through the top wall
-        if character_y > 720:
-            character_y = 720
+    if (character_alive == True):
+        # Move up
+        if key == "w" or key == "W":
+            character_direction = "up"
+            direction[0] = 1
+        # Move right
+        elif key == "d" or key == "D":
+            character_direction = "right"
+            direction[3] = 1
+        # Move left
+        elif key == "a" or key == "A":
+            character_direction = "left"
+            direction[1] = 1
+        # Move down
+        elif key == "s" or key == "S":
+            character_direction = "down"
+            direction[2] = 1
+            
+def keyReleased():
+    global character_x, character_y, character_speed, character_alive, direction
+    global character_direction
+    
+    if (character_alive == True):
+        # Move up
+        if key == "w" or key == "W":
+            character_direction = "up"
+            direction[0] = 0
+        # Move right
+        elif key == "d" or key == "D":
+            character_direction = "right"
+            direction[3] = 0
+        # Move left
+        elif key == "a" or key == "A":
+            character_direction = "left"
+            direction[1] = 0
+        # Move down
+        elif key == "s" or key == "S":
+            character_direction = "down"
+            direction[2] = 0
 
 def mousePressed():
-    global character_x, character_y, character_alive
+    global character_x, character_y, character_alive, direction
     global circle_x, circle_y
     global score
     global minim
     global first_time
+    global on_main_menu
     
-    if (character_alive == True):
+    if (on_main_menu == True):
+        # Check to see if we clicked on the play now button
+        if mouseX >= 300 and mouseX <= 500 and mouseY >= 400 and mouseY <= 450:
+            on_main_menu = False
+            character_alive = True
+    elif (character_alive == True):
         # Draw the laser
         pushStyle()
         stroke(245, 62, 236)
@@ -315,6 +368,7 @@ def mousePressed():
            character_x = 350
            character_y = 350
            first_time = True
+           direction = [0, 0, 0, 0]
            minim.stop()  # Stop the end game song
            minim.loadFile("Deep Logic.wav").loop()
         
