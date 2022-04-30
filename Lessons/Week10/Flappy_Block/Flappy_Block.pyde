@@ -92,7 +92,7 @@ def play_game():
     fill(255, 0, 0)
     rect(<----------------------------->, 0, 60, wall_width)
     # End with the bottom part
-    rect(wall_x, wall_width + wall_spacing, 60, 600 - wall_width)
+    rect(wall_x, wall_width + wall_spacing, 60, 600 - wall_width - wall_spacing)
     
     # Gravity will pull the bird down so we need to change the birds location by applying gravity
     bird_y = bird_y + <----------------------------->
