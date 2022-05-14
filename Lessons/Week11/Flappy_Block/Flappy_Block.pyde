@@ -103,7 +103,7 @@ def play_game():
         if (wall_width >= bird_y >= 0) or (<--------------------> >= bird_y + 60 >= <---------------------->):
             game_finished = <----------------------------->
         # Now check if the bird hit the bottom wall    
-        elif (600 -wall_width >= bird_y >= wall_width + wall_spacing) or (600 - wall_width >= bird_y + 60 >= wall_width + wall_spacing):
+        elif (600 >= bird_y >= wall_width + wall_spacing) or (600 >= bird_y + 60 >= wall_width + wall_spacing):
             game_finished = <----------------------------->
     elif <-----------> > 650 or bird_y < -100:
         game_finished = <----------------------------->
