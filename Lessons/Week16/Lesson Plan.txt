@@ -1,0 +1,3 @@
+1) Finish working on Clicky Game project
+2) Talk about next steps and OOP class
+3) Finish words and discussion
